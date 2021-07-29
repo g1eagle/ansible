@@ -33,4 +33,5 @@ all:
         Platnium: {}
   vars:
     ansible_python_interpreter: /usr/bin/python3
-    remote_user: root
+    remote_user: Dragon
+    Goddess_remote_user: Astra
