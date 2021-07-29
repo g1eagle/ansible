@@ -1,0 +1,36 @@
+---
+all:
+  hosts:
+    Goddess:
+      ansible_host: Goddess
+    Platnium:
+      ansible_host: Platnium
+    Gold:
+      ansible_host: Gold
+    Silver:
+      ansible_host: Silver
+    Copper:
+      ansible_host: Copper
+  children:
+    raspberry_pi:
+      hosts:
+        Goddess: {}
+        Platnium: {}
+        Gold: {}
+        Silver: {}
+        Copper: {}
+    k3s_main:
+      hosts:
+        Goddess: {}
+    k3s_worker:
+      hosts:
+        Platnium: {}
+        Gold: {}
+        Silver: {}
+        Copper: {}
+    monitoring_server:
+      hosts:
+        Platnium: {}
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    remote_user: root
