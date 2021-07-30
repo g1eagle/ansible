@@ -105,6 +105,12 @@
     line: '%sudo   ALL=(ALL:ALL) NOPASSWD: ALL '
     validate: /usr/sbin/visudo -cf %s
 
+- name: Download foo.conf
+  get_url:
+    url: https://get.k3sup.dev
+    dest: $home
+    mode: '0777'
+
 - name: install K3sup
   become: yes
   become_method: sudo
@@ -113,7 +119,7 @@
 - name: move K3sup to correct folder
   become: yes
   become_method: sudo
-  ansible.builtin.command: sudo install k3sup /usr/local/bin/
+  ansible.builtin.command: install k3sup /usr/local/bin/
   
 - name: run k3up
   become: yes
