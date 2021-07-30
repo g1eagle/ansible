@@ -21,7 +21,7 @@
   register: register_name
 
 - name: Generate an OpenSSH keypair with the default values (4096 bits, rsa)
-  community.crypto.openssh_keypair:
+  - openssh_keypair:
     path: ~/.ssh/id_rsa
   when: not register_name.stat.exists
 
