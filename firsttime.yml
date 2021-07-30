@@ -1,8 +1,5 @@
 ---
 - hosts: command
-  vars:
-    inventory_hostname: Goddess
-    ansible_sudo_pass: "{{ lookup('password', 'passwords/' + inventory_hostname) }}"
   user: astra
   roles:
     - command
