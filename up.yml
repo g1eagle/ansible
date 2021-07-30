@@ -1,13 +1,11 @@
 ---
-- hosts: Goddess
-  user: Astra
+- hosts: command
+  user: astra
   roles:
+    - command
     - common
-- hosts: monitoring_server 
-  user: Dragon
-  roles:
-    - monitoring_server
-- hosts: Dragons 
-  user: Dragon
-  roles:
-    - common 
+
+#- hosts: monitoring_server 
+#  user: pi
+#  roles:
+#    - monitoring_server 
