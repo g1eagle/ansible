@@ -4,11 +4,12 @@
   roles:
     - command
     - common
-    
+  ansible_sudo_pass: "{{ lookup('password', 'passwords/' + inventory_hostname) }}"
 - hosts: dragons
   user: dragon
   roles:
     - common
+  ansible_sudo_pass: "{{ lookup('password', 'passwords/' + inventory_hostname) }}"
 
 #- hosts: monitoring_server 
 #  user: pi
