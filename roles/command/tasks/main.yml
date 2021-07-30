@@ -108,7 +108,7 @@
 - name: Download foo.conf
   get_url:
     url: https://get.k3sup.dev
-    dest: ~/
+    dest: ~
     mode: '0777'
 
 - name: move K3sup to correct folder
