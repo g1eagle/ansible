@@ -2,7 +2,7 @@
 all:
   hosts:
     Goddess:
-      ansible_host: Goddess
+      ansible_host: localhost
     Platnium:
       ansible_host: Platnium
     Gold:
@@ -31,10 +31,9 @@ all:
     monitoring_server:
       hosts:
         Platnium: {}
-    database_server:
-      hosts:
-        Platnium: {}
+#    database_server:
+#      hosts:
+#        Platnium: {}
   vars:
     ansible_python_interpreter: /usr/bin/python3
-    remote_user: Dragon
-    Goddess_remote_user: Astra
+    remote_user: dragon
