@@ -31,6 +31,9 @@ all:
     monitoring_server:
       hosts:
         Platnium: {}
+    database_server:
+      hosts:
+        Platnium: {}
   vars:
     ansible_python_interpreter: /usr/bin/python3
     remote_user: Dragon
