@@ -105,11 +105,9 @@
     line: '%sudo   ALL=(ALL:ALL) NOPASSWD: ALL '
     validate: /usr/sbin/visudo -cf %s
 
-- name: Download foo.conf
-  get_url:
-    url: https://get.k3sup.dev
-    dest: ~
-    mode: '0777'
+- name: Download k3sup
+  ansible.builtin.command: curl -sLS https://get.k3sup.dev | sh
+  warn: off
 
 - name: move K3sup to correct folder
   become: yes
