@@ -108,13 +108,8 @@
 - name: Download foo.conf
   get_url:
     url: https://get.k3sup.dev
-    dest: $home
+    dest: $home/
     mode: '0777'
-
-- name: install K3sup
-  become: yes
-  become_method: sudo
-  ansible.builtin.command: curl -sLS https://get.k3sup.dev
 
 - name: move K3sup to correct folder
   become: yes
