@@ -95,3 +95,53 @@
 - name: Push Key's to servers.
   ansible.builtin.command: ssh-copy-id dragon@Copper
 
+- name: Validate the sudoers file before saving
+  become: yes
+  become_method: sudo
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%sudo   ALL='
+    line: '%sudo   ALL=(ALL:ALL) NOPASSWD: ALL '
+    validate: /usr/sbin/visudo -cf %s
+
+- name: install K3sup
+  become: yes
+  become_method: sudo
+  ansible.builtin.command: curl -sLS https://get.k3sup.dev
+
+- name: move K3sup to correct folder
+  become: yes
+  become_method: sudo
+  ansible.builtin.command: sudo install k3sup /usr/local/bin/
+  
+- name: run k3up
+  become: yes
+  become_method: sudo
+  ansible.builtin.command: k3sup install --local --no-extras 
+	
+- name: Validate the sudoers file before saving
+  become: yes
+  become_method: sudo
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%sudo   ALL='
+    line: '%sudo   ALL=(ALL:ALL) NOPASSWD: ALL '
+    validate: /usr/sbin/visudo -cf %s
+	
+- name: Get MetalLB installed
+  become: yes
+  become_method: sudo
+  ansible.builtin.command: kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
+	
+- name: Get MetalLB installed
+  become: yes
+  become_method: sudo
+  ansible.builtin.command: kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml
+
+- name: Get MetalLB installed
+  become: yes
+  become_method: sudo
+  ansible.builtin.command: kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+
