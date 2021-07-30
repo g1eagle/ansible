@@ -119,7 +119,7 @@
   become: yes
   become_method: sudo
   ansible.builtin.command: k3sup install --local --no-extras 
-	
+
 - name: Validate the sudoers file before saving
   become: yes
   become_method: sudo
@@ -129,12 +129,12 @@
     regexp: '^%sudo   ALL='
     line: '%sudo   ALL=(ALL:ALL) NOPASSWD: ALL '
     validate: /usr/sbin/visudo -cf %s
-	
+
 - name: Get MetalLB installed
   become: yes
   become_method: sudo
   ansible.builtin.command: kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
-	
+
 - name: Get MetalLB installed
   become: yes
   become_method: sudo
