@@ -22,10 +22,10 @@ all:
         Gold: {}
         Silver: {}
         Copper: {}
-    k3s_main:
+    Goddess:
       hosts:
         Goddess: {}
-    k3s_worker:
+    dragons:
       hosts:
         Platnium: {}
         Gold: {}
