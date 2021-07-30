@@ -107,7 +107,8 @@
 
 - name: Download k3sup
   ansible.builtin.command: curl -sLS https://get.k3sup.dev | sh
-  warn: off
+  args:
+    warn: false
 
 - name: move K3sup to correct folder
   become: yes
