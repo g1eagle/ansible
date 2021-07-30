@@ -1,0 +1,13 @@
+---
+- hosts: Goddess
+  user: Astra
+  roles:
+    - common
+- hosts: monitoring_server 
+  user: Dragon
+  roles:
+    - monitoring_server
+- hosts: Dragons 
+  user: Dragon
+  roles:
+    - common 
