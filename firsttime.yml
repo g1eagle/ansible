@@ -4,6 +4,11 @@
   roles:
     - command
     - common
+    
+- hosts: dragons
+  user: dragon
+  roles:
+    - common
 
 #- hosts: monitoring_server 
 #  user: pi
