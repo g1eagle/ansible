@@ -152,3 +152,7 @@
   become_method: sudo
   ansible.builtin.command: kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 
+- name: Get MetalLB installed
+  become: yes
+  become_method: sudo
+  ansible.builtin.command: kubectl apply -n portainer -f https://raw.githubusercontent.com/portainer/k8s/master/deploy/manifests/portainer/portainer.yaml
