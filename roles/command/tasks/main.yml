@@ -13,7 +13,9 @@
     pkg:
       - python3-pip
       - git
-      - openssh-client 
+      - openssh-client
+      - pass
+      - gpg2
 
 - name: Check if SSH key's exists
   stat:
