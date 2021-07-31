@@ -2,7 +2,7 @@
 all:
   hosts:
     Goddess:
-      ansible_host: Goddess
+      ansible_host: localhost
     Platnium:
       ansible_host: Platnium
     Gold:
@@ -15,6 +15,8 @@ all:
     command:
       hosts:
         Goddess: {}
+      vars:
+        ansible_connection: local
     raspberry_pi:
       hosts:
         Goddess: {}
