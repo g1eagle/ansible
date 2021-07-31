@@ -1,0 +1,17 @@
+---
+- hosts: dragons 
+  user: dragon
+  vars:
+    ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
+  become: yes
+  become_user: root
+  tasks:
+    - reboot:
+- hosts: goddess
+  user: astra
+  vars:
+    ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
+  become: yes
+  become_user: root
+  tasks:
+    - reboot:
