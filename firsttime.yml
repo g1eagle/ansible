@@ -6,6 +6,7 @@
   roles:
     - command
     - common
+    - nfs-command
   
 - hosts: dragons
   vars:
@@ -13,6 +14,16 @@
   user: dragon
   roles:
     - common
+
+- hosts: database
+  user: dragon
+  roles:
+    - database
+
+- hosts: nfs
+  user: dragon
+  roles:
+    - nfs
 
 #- hosts: monitoring_server 
 #  user: pi
