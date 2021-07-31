@@ -2,7 +2,7 @@
 all:
   hosts:
     Goddess:
-      ansible_host: localhost
+      ansible_host: Goddess
     Platnium:
       ansible_host: Platnium
     Gold:
