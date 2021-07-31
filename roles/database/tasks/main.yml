@@ -1,0 +1,25 @@
+- name: 'Update and upgrade apt packages'
+  become: yes
+  apt:
+    upgrade: yes
+    update_cache: yes
+    cache_valid_time: 86400
+- name: 'Install packages'
+  become: yes
+  apt:
+    pkg:
+      - nfs-kernel-server
+- name: "/mnt/Extssd *(rw,no_root_squash,insecure,async,no_subtree_check,anonuid=1000,anongid=1000)"
+  become: yes
+  become_method: sudo
+  lineinfile:
+    path: /etc/hosts
+    line: "/mnt/Extssd *(rw,no_root_squash,insecure,async,no_subtree_check,anonuid=1000,anongid=1000)"
+    state: present
+    backup: yes
+  register: checkext
+- name: Start NFS Server
+  become: yes
+  become_method: sudo
+  ansible.builtin.command: exportfs -ra
+
