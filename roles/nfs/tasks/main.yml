@@ -1,0 +1,25 @@
+- name: 'Install packages'
+  become: yes
+  apt:
+    pkg:
+      - nfs-common
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: /mnt/Extssd
+    state: directory
+    mode: '0755'
+- name: Change file ownership, group and permissions
+  ansible.builtin.file:
+    path: /mnt/Extssd 
+    owner: dragon
+    group: dragon
+    mode: '0755'
+- name: "192.168.2.201:/mnt/Extssd"
+  become: yes
+  become_method: sudo
+  lineinfile:
+    path: /etc/fstab
+    line: "192.168.2.201:/mnt/Extssd   /mnt/Extssd   nfs    rw  0  0"
+    state: present
+    backup: yes
+  register: checkext
