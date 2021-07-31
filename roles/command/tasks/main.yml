@@ -135,20 +135,28 @@
     line: '%sudo   ALL=(ALL:ALL) NOPASSWD: ALL '
     validate: /usr/sbin/visudo -cf %s
 
+- name: Confirm metallb install 
+  pause:
+    prompt: "Are you sure you want to install metallb? (yes/no)"
+  register: confirm_delete
+
 - name: Get MetalLB installed p1
   become: yes
   become_method: sudo
   ansible.builtin.command: kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
+  when: confirm_delete.user_input | bool
 
 - name: Get MetalLB installed p2
   become: yes
   become_method: sudo
   ansible.builtin.command: kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml
+  when: confirm_delete.user_input | bool
 
 - name: Get MetalLB installed p3
   become: yes
   become_method: sudo
   ansible.builtin.command: kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+  when: confirm_delete.user_input | bool
 
 - name: Install Portainer
   become: yes
