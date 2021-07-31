@@ -1,7 +1,7 @@
 ---
 - hosts: command
   vars:
-    ansible_sudo_pass: "{{ lookup('passwordstore', 'inventory_hostname') }}"
+    ansible_sudo_pass="{{ lookup('passwordstore', inventory_hostname) }}"
   user: astra
   roles:
     - command
@@ -9,7 +9,7 @@
   
 - hosts: dragons
   vars:
-    ansible_sudo_pass: "{{ lookup('passwordstore', 'inventory_hostname') }}"
+    ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
   user: dragon
   roles:
     - common
