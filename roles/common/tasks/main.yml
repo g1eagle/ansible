@@ -1,6 +1,4 @@
 ---
-- name: Basic lookup. Fails if example/test doesn't exist
-  debug: msg="{{ lookup('passwordstore', inventory_hostname)}}"
 - name: 'Update and upgrade apt packages'
   become: yes
   apt:
