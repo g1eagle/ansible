@@ -18,3 +18,6 @@ Promethius
 Grafana
 FoundryVTT
 Wordpress? Website
+
+
+Based on https://github.com/dinofizz/picluster-ansible
