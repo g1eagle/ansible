@@ -1,8 +1,6 @@
 ---
-- name: Print the gateway for each host when defined
-  ansible.builtin.debug:
-    msg: System {{ inventory_hostname }} has gateway {{ ansible_default_ipv4.gateway }}
-  when: ansible_default_ipv4.gateway is defined
+- name: Basic lookup. Fails if example/test doesn't exist
+  debug: msg="{{ lookup('passwordstore', inventory_hostname)}}"
 - name: 'Update and upgrade apt packages'
   become: yes
   apt:
