@@ -1,6 +1,4 @@
 ---
-- name: Basic lookup. Fails if example/test doesn't exist
-  debug: msg="{{ lookup('passwordstore', 'example/test')}}"
 # Command Branch Server tasks. 
 
 - name: 'Update and upgrade apt packages'
