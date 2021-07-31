@@ -15,6 +15,8 @@
     - common
 
 - hosts: database
+  vars:
+    ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
   user: dragon
   roles:
     - database
@@ -27,6 +29,8 @@
     - nfs-command
 
 - hosts: nfs
+  vars:
+    ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
   user: dragon
   roles:
     - nfs
