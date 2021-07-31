@@ -24,7 +24,7 @@ all:
         Gold: {}
         Silver: {}
         Copper: {}
-    Goddess:
+    Command:
       hosts:
         Goddess: {}
     dragons:
