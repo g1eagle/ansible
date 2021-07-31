@@ -4,11 +4,15 @@
     pkg:
       - nfs-common
 - name: Create a directory if it does not exist
+  become: yes
+  become_method: sudo
   ansible.builtin.file:
     path: /mnt/Extssd
     state: directory
     mode: '0755'
 - name: Change file ownership, group and permissions
+  become: yes
+  become_method: sudo
   ansible.builtin.file:
     path: /mnt/Extssd 
     owner: astra
