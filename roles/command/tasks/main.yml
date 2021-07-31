@@ -15,7 +15,6 @@
       - git
       - openssh-client
       - pass
-      - gpg2
 
 - name: Check if SSH key's exists
   stat:
