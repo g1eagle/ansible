@@ -33,12 +33,17 @@ all:
         Gold: {}
         Silver: {}
         Copper: {}
+    nfs:
+      hosts:
+        Gold: {}
+        Silver: {}
+        Copper: {}
     monitoring_server:
       hosts:
         Platnium: {}
-#    database_server:
-#      hosts:
-#        Platnium: {}
+    database:
+      hosts:
+        Platnium: {}
   vars:
     ansible_python_interpreter: /usr/bin/python3
     remote_user: dragon
