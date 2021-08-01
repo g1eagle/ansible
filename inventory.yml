@@ -17,7 +17,7 @@ all:
         Goddess: {}
       vars:
         ansible_connection: local
-    raspberry_pi:
+    raspberrypi:
       hosts:
         Goddess: {}
         Platnium: {}
