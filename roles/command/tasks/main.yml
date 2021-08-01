@@ -99,7 +99,17 @@
 - name: k3s Node connection
   become: yes
   become_method: sudo
-  ansible.builtin.shell: curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
+  ansible.builtin.shell: export K3S_KUBECONFIG_MODE="644"
+
+- name: k3s Node connection
+  become: yes
+  become_method: sudo
+  ansible.builtin.shell: export INSTALL_K3S_EXEC=" --no-deploy servicelb --no-deploy traefik"
+
+- name: k3s Node connection
+  become: yes
+  become_method: sudo
+  ansible.builtin.shell: curl -sfL https://get.k3s.io | sh -
 
 - name: Give insecure permissions to an existing file
   become: yes
