@@ -3,6 +3,8 @@
   pause:
     prompt: "Update and upgrade? (yes/no)"
   register: confirm_updates1
+- set_fact:
+    confirm_updates1: "{{ confirm_updates1 }}"
 - name: 'Update and upgrade apt packages'
   become: yes
   apt:
