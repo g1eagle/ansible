@@ -1,15 +1,15 @@
 ---
-- name: Confirm metallb install 
+- name: Updates 
   pause:
     prompt: "Update and upgrade? (yes/no)"
-  register: confirm_updates
+  register: confirm_updates1
 - name: 'Update and upgrade apt packages'
   become: yes
   apt:
     upgrade: yes
     update_cache: yes
     cache_valid_time: 86400
-  when: confirm_updates.user_input | bool
+  when: confirm_updates1.user_input | bool
 - name: 'Install packages'
   become: yes
   apt:
@@ -18,7 +18,7 @@
       - git
       - nano
       - openssh-client
-  when: confirm_updates.user_input | bool
+  when: confirm_updates1.user_input | bool
   
 - name: Check if SSH key's exists
   stat:
