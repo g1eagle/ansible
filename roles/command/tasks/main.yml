@@ -111,6 +111,16 @@
   become_method: sudo
   ansible.builtin.shell: curl -sfL https://get.k3s.io | sh -
   
+- name: Display token
+  become: yes
+  become_method: sudo
+  ansible.builtin.shell: cat /var/lib/rancher/k3s/server/node-token
+  
+- name: Grab token
+  pause:
+    prompt: "Grab the token above for later! then type yes to continue!"
+  register: confirm_nothing
+  
 - name: Give insecure permissions to an existing file
   become: yes
   become_method: sudo
