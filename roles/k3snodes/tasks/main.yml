@@ -23,12 +23,12 @@
   register: installk3sup
 
 - name: if this file does not exist, let me know, but continue
-  debug: k3sup join --ip Platnium --server-ip Goddess --user {{ inventory_hostname }}
+  debug: msg="k3sup join --ip {{ inventory_hostname }} --server-ip Goddess --user {{ inventory_hostname }}"
 
 - name: install k3 on nodes.
   become: yes
   become_method: sudo
-  ansible.builtin.shell: k3sup join --ip Platnium --server-ip Goddess --user {{ inventory_hostname }}
+  ansible.builtin.shell: k3sup join --ip {{ inventory_hostname }} --server-ip Goddess --user {{ inventory_hostname }}
 
 - name: Validate the sudoers file before saving
   become: yes
