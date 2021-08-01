@@ -120,7 +120,7 @@
 - name: Display token
   become: yes
   become_method: sudo
-  debug: msg="{{ lookup('file', '/var/lib/rancher/k3s/server/node-token' ) }}"
+  debug: msg="{{ lookup('file', '/var/lib/rancher/k3s/server/node-token', errors='warn') }}"
   
 - name: Grab token
   pause:
