@@ -1,5 +1,5 @@
 - name: Run a shell command and register its output as a variable
-  local_action: ansible.builtin.shell: cat /var/lib/rancher/k3s/server/node-token
+  local_action: ansible.builtin.shell cat /var/lib/rancher/k3s/server/node-token
   register: k3smastertoken
 - name: install k3 on nodes.
   become: yes
