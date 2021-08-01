@@ -1,5 +1,41 @@
+- name: Validate the sudoers file before saving
+  become: yes
+  become_method: sudo
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%sudo   ALL='
+    line: '%sudo   ALL=(ALL:ALL) NOPASSWD: ALL '
+    validate: /usr/sbin/visudo -cf %s
+
+- name: Fetch k3sup setup
+  get_url:
+    url: https://get.k3sup.dev
+    dest: /usr/local/bin/getk3sup.sh
+    mode: 0755
+  become: yes
+  register: fetchgetk3sup
+
+- name: Install k3sup binary
+  when: fetchgetk3sup is succeeded
+  command: /usr/local/bin/getk3sup.sh
+  become: yes
+  register: installk3sup
+  
 - name: install k3 on nodes.
   become: yes
   become_method: sudo
   ansible.builtin.command: k3sup join --ip Platnium --server-ip Goddess --user {{ inventory_hostname }}
+
+- name: Validate the sudoers file before saving
+  become: yes
+  become_method: sudo
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%sudo   ALL='
+    line: '%sudo   ALL=(ALL:ALL) ALL'
+    validate: /usr/sbin/visudo -cf %s
+    
+
 
