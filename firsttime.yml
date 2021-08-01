@@ -14,6 +14,13 @@
   roles:
     - common
 
+- hosts: dragons
+  vars:
+    ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
+  user: dragon
+  roles:
+    - k3snodes
+
 - hosts: database
   vars:
     ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
