@@ -8,8 +8,11 @@
     path: ~/.ssh/id_rsa
   when: not register_name.stat.exists
   
-- name: Push Key's to servers.
-  ansible.builtin.command: ssh-copy-id astra@Goddess
+- name: Set authorized key for user ubuntu copying it from current user
+  authorized_key:
+    user: astra
+    state: present
+    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
 
 - name: Validate the sudoers file before saving
   become: yes
