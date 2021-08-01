@@ -23,7 +23,8 @@
   register: installk3sup
   
 - name: if this file does not exist, let me know, but continue
-  debug: host=hostvars[inventory_hostname]['ansible_default_ipv4']['address']
+  debug: var=hostvars[inventory_hostname]['ansible_default_ipv4']['address']
+  register: host
 
 - name: if this file does not exist, let me know, but continue
   debug: msg="k3sup join --ip {{ host }} --server-ip {{ Goddessipaddy }} --user {{ inventory_hostname }}"
