@@ -3,6 +3,8 @@
   become_method: sudo
   local_action: ansible.builtin.shell cat /var/lib/rancher/k3s/server/node-token
   register: k3smastertoken
+  ansible.builtin.debug:
+    msg: curl -sfL https://get.k3s.io | K3S_TOKEN="{{ k3smastertoken }}" K3S_URL="https://Goddess:6443" K3S_NODE_NAME="{{ inventory_hostname }}" sh -
 - name: install k3 on nodes.
   become: yes
   become_method: sudo
