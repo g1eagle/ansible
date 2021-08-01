@@ -1,7 +1,7 @@
 - name: Run a shell command and register its output as a variable
   become: yes
   become_method: sudo
-  local_action: {{lookup('file', '/var/lib/rancher/k3s/server/node-token' ) }}
+  local_action: "{{ lookup('file', '/var/lib/rancher/k3s/server/node-token') }}"
   register: k3smastertoken
 - name: show output?
   ansible.builtin.debug:
