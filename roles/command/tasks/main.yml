@@ -1,12 +1,17 @@
 ---
 # Command Branch Server tasks. 
-
+- name: Confirm metallb install 
+  pause:
+    prompt: "Update and upgrade? (yes/no)"
+  register: confirm_updates
 - name: 'Update and upgrade apt packages'
   become: yes
   apt:
     upgrade: yes
     update_cache: yes
     cache_valid_time: 86400
+  when: confirm_updates.user_input | bool
+  
 - name: 'Install packages'
   become: yes
   apt:
@@ -15,7 +20,8 @@
       - git
       - openssh-client
       - pass
-
+  when: confirm_updates.user_input | bool
+  
 - name: Check if SSH key's exists
   stat:
     path: ~/.ssh/id_rsa
