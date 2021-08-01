@@ -1,0 +1,4 @@
+- name: install 
+  become: yes
+  become_method: sudo
+  ansible.builtin.command: curl -sfL https://get.k3s.io | K3S_TOKEN="YOURTOKEN" K3S_URL="https://[your server]:6443" K3S_NODE_NAME="servername" sh - 
