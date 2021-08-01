@@ -23,7 +23,7 @@
   register: installk3sup
 
 - name: if this file does not exist, let me know, but continue
-  debug: msg="k3sup join --ip {{ ansible_ssh_host }} --server-ip {{ Goddessipaddy }} --user {{ inventory_hostname }}"
+  debug: msg="k3sup join --ip hostvars[inventory_hostname]['ansible_default_ipv4']['address'] --server-ip {{ Goddessipaddy }} --user {{ inventory_hostname }}"
 
 - name: install k3 on nodes.
   become: yes
