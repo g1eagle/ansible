@@ -17,7 +17,7 @@
 - hosts: dragons
   vars:
     ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
-    token: "{{ lookup('file', /var/lib/rancher/k3s/server/node-token) }}"
+    k3smastertoken: "{{ lookup('file', /var/lib/rancher/k3s/server/node-token) }}"
   user: dragon
   roles:
     - k3snodes
