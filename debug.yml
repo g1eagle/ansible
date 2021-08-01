@@ -1,6 +1,6 @@
 
 ---
-- hosts: raspberrypi
+- hosts: command
   vars:
     ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
   user: astra
@@ -13,5 +13,6 @@
     Goddessipaddy: 192.168.2.200
   user: dragon
   roles:
+    - common
     - k3snodes
 
