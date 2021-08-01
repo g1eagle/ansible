@@ -1,3 +1,9 @@
+- hosts: all
+  vars:
+    ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
+  roles:
+    -common
+
 - hosts: dragons
   vars:
     ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
