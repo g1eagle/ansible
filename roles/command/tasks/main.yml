@@ -110,7 +110,7 @@
   become: yes
   become_method: sudo
   ansible.builtin.shell: curl -sfL https://get.k3s.io | sh -
-
+  
 - name: Give insecure permissions to an existing file
   become: yes
   become_method: sudo
