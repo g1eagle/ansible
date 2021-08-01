@@ -79,7 +79,17 @@
     backup: yes
   register: checkect1
      
-- name: Set authorized key for user ubuntu copying it from current user
-  authorized_key:
-    state: present
-    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+- name: Push Key's to servers.
+  ansible.builtin.command: ssh-copy-id astra@Goddess
+
+- name: Push Key's to servers.
+  ansible.builtin.command: ssh-copy-id dragon@Platnium
+  
+- name: Push Key's to servers.
+  ansible.builtin.command: ssh-copy-id dragon@Gold
+
+- name: Push Key's to servers.
+  ansible.builtin.command: ssh-copy-id dragon@Silver
+  
+- name: Push Key's to servers.
+  ansible.builtin.command: ssh-copy-id dragon@Copper
