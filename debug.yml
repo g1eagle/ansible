@@ -1,16 +1,4 @@
 - hosts: dragons
-    Platnium:
-      vars:
-        ipaddy: 192.168.2.201
-    Gold:
-      vars:
-        ipaddy: 192.168.2.201
-    Silver:
-      vars:
-        ipaddy: 192.168.2.201
-    Copper:
-      vars:
-        ipaddy: 192.168.2.201
     vars:
       ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
       Goddessipaddy: 192.168.2.200
