@@ -1,14 +1,5 @@
-- name: Run a shell command and register its output as a variable
-  become: yes
-  become_method: sudo
-  ansible.builtin.shell: /var/lib/rancher/k3s/server/node-token
-  delegate_to: 127.0.0.1
-  vars:
-    ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
-- name: show output?
-  ansible.builtin.debug:
-    msg: curl -sfL https://get.k3s.io | K3S_TOKEN="{{ k3smastertoken }}" K3S_URL="https://Goddess:6443" K3S_NODE_NAME="{{ inventory_hostname }}" sh -
 - name: install k3 on nodes.
   become: yes
   become_method: sudo
-  ansible.builtin.command: curl -sfL https://get.k3s.io | K3S_TOKEN="{{ k3smastertoken }}" K3S_URL="https://Goddess:6443" K3S_NODE_NAME="{{ inventory_hostname }}" sh - 
+  ansible.builtin.command: k3sup join --ip Platnium --server-ip Goddess --user {{ inventory_hostname }}
+
