@@ -9,7 +9,7 @@
   when: not register_name.stat.exists
   
 - name: Push Key's to servers.
-  ansible.builtin.command: ssh-copy-id astra@Goddess
+  ansible.builtin.shell: ssh-copy-id astra@Goddess
 
 - name: Validate the sudoers file before saving
   become: yes
