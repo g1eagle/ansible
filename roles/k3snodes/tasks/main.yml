@@ -1,16 +1,3 @@
-- name: Check if SSH key's exists
-  stat:
-    path: ~/.ssh/id_rsa
-  register: register_name
-
-- name: Generate an OpenSSH keypair with the default values (4096 bits, rsa)
-  community.crypto.openssh_keypair:
-    path: ~/.ssh/id_rsa
-  when: not register_name.stat.exists
-  
-- name: Push Key's to servers.
-  ansible.builtin.shell: ssh-copy-id astra@Goddess
-
 - name: Validate the sudoers file before saving
   become: yes
   become_method: sudo
