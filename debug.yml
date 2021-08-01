@@ -1,7 +1,7 @@
 - hosts: dragons
-    vars:
-      ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
-      Goddessipaddy: 192.168.2.200
+  vars:
+    ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
+    Goddessipaddy: 192.168.2.200
   user: dragon
   roles:
     - k3snodes
