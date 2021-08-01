@@ -118,6 +118,7 @@
   ansible.builtin.shell: curl -sfL https://get.k3s.io | sh -
   
 - name: Display token
+  become_user: root
   become: yes
   become_method: sudo
   debug: msg="{{ lookup('file', '/var/lib/rancher/k3s/server/node-token', errors='warn') }}"
