@@ -96,44 +96,10 @@
 - name: Push Key's to servers.
   ansible.builtin.command: ssh-copy-id dragon@Copper
 
-- name: Validate the sudoers file before saving
+- name: k3s Node connection
   become: yes
   become_method: sudo
-  ansible.builtin.lineinfile:
-    path: /etc/sudoers
-    state: present
-    regexp: '^%sudo   ALL='
-    line: '%sudo   ALL=(ALL:ALL) NOPASSWD: ALL '
-    validate: /usr/sbin/visudo -cf %s
-
-- name: Fetch k3sup setup
-  get_url:
-    url: https://get.k3sup.dev
-    dest: /usr/local/bin/getk3sup.sh
-    mode: 0755
-  become: yes
-  register: fetchgetk3sup
-
-- name: Install k3sup binary
-  when: fetchgetk3sup is succeeded
-  command: /usr/local/bin/getk3sup.sh
-  become: yes
-  register: installk3sup
-  
-- name: run k3up
-  become: yes
-  become_method: sudo
-  ansible.builtin.command: k3sup install --local --no-extras 
-
-- name: Validate the sudoers file before saving
-  become: yes
-  become_method: sudo
-  ansible.builtin.lineinfile:
-    path: /etc/sudoers
-    state: present
-    regexp: '^%sudo   ALL='
-    line: '%sudo   ALL=(ALL:ALL) NOPASSWD: ALL '
-    validate: /usr/sbin/visudo -cf %s
+  ansible.builtin.shell: curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
 
 - name: Give insecure permissions to an existing file
   become: yes
