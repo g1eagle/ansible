@@ -12,4 +12,75 @@
       - python3-pip
       - git
       - nano
-      
+      - openssh-client
+
+- name: Check if SSH key's exists
+  stat:
+    path: ~/.ssh/id_rsa
+  register: register_name
+
+- name: Generate an OpenSSH keypair with the default values (4096 bits, rsa)
+  openssh_keypair:
+    path: ~/.ssh/id_rsa
+  when: not register_name.stat.exists
+
+- name: "Add 192.168.2.200 Goddess if it does not exist"
+  become: yes
+  become_method: sudo
+  tags: example2
+  lineinfile:
+    path: /etc/hosts
+    line: "192.168.2.200 Goddess"
+    state: present
+    backup: yes
+  register: checkect1
+
+- name: "Add 192.168.2.201 Platnium if it does not exist"
+  become: yes
+  become_method: sudo
+  tags: example2
+  lineinfile:
+    path: /etc/hosts
+    line: "192.168.2.201 Platnium"
+    state: present
+    backup: yes
+  register: checkect1
+
+- name: "Add 192.168.2.202 Gold if it does not exist"
+  become: yes
+  become_method: sudo
+  tags: example2
+  lineinfile:
+    path: /etc/hosts
+    line: "192.168.2.202 Gold"
+    state: present
+    backup: yes
+  register: checkect1
+
+- name: "Add 192.168.2.203 Silver if it does not exist"
+  become: yes
+  become_method: sudo
+  tags: example2
+  lineinfile:
+    path: /etc/hosts
+    line: "192.168.2.203 Silver"
+    state: present
+    backup: yes
+  register: checkect1
+
+- name: "Add 192.168.2.204 Copper if it does not exist"
+  become: yes
+  become_method: sudo
+  tags: example2
+  lineinfile:
+    path: /etc/hosts
+    line: "192.168.2.204 Copper"
+    state: present
+    backup: yes
+  register: checkect1
+     
+- name: Set authorized key for user ubuntu copying it from current user
+  authorized_key:
+    user: astra
+    state: present
+    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
