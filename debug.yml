@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: raspberry_pi
   vars:
     ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
   roles:
