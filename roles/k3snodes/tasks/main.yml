@@ -1,8 +1,7 @@
 - name: Run a shell command and register its output as a variable
   become: yes
   become_method: sudo
-  vars:
-    k3smastertoken: "{{ lookup('file', '/var/lib/rancher/k3s/server/node-token') }}"
+  ansible.builtin.shell: /var/lib/rancher/k3s/server/node-token
   delegate_to: 127.0.0.1
 - name: show output?
   ansible.builtin.debug:
