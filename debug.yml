@@ -1,6 +1,16 @@
 - hosts: dragons
+    Platnium:
+      ipaddy: 192.168.2.201
+    Gold:
+      ipaddy: 192.168.2.201
+    Silver:
+      ipaddy: 192.168.2.201
+    Copper:
+      ipaddy: 192.168.2.201
   vars:
     ansible_sudo_pass: "{{ lookup('passwordstore', inventory_hostname) }}"
+    Goddessipaddy: 192.168.2.200
   user: dragon
   roles:
     - k3snodes
+
