@@ -1,6 +1,6 @@
 ---
 # Command Branch Server tasks. 
-- name: Confirm metallb install 
+- name: Updates 
   pause:
     prompt: "Update and upgrade? (yes/no)"
   register: confirm_updates
